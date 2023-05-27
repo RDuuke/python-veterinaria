@@ -1,19 +1,18 @@
 from datetime import datetime
 from random import randint
 
-class Veterinaria:
+class Veterinaria: #Clase veterinaria que es nuestra principal, y es la que maneja las listas de memoria
     def __init__(self):
-        self.lista_administradores = []
-        self.lista_veterinarios =[]
-        self.lista_vendedores = []
-        self.lista_duenos = []
-        self.lista_mascotas = []
-        self.historias_clinicas = []
-        self.lista_ordenes = []
-        self.lista_facturas = []
-
-        self.registrar_administrador()
-
+        self.lista_administradores = [] #funcionan como tablas 
+        self.lista_veterinarios =[] #funcionan como tablas
+        self.lista_vendedores = [] #funcionan como tablas
+        self.lista_duenos = [] #funcionan como tablas
+        self.lista_mascotas = [] #funcionan como tablas
+        self.historias_clinicas = [] #funcionan como tablas
+        self.lista_ordenes = [] #funcionan como tablas
+        self.lista_facturas = [] #funcionan como tablas
+        
+    #Metodos de precarga de información
     def registrar_administrador(self):
         admon = Administrador(123456, "Administrador", 30, "admin", 123)
         self.lista_administradores.append(admon)
@@ -58,13 +57,14 @@ class Veterinaria:
         self.lista_ordenes.append(orden)
         
 
-class Persona:
+class Persona: #Clase padre que hereden las otras clases, las clases hijas heren las propiedaes (*)
     def __init__(self, cedula, nombre, edad, rol):
-        self.cedula =cedula
-        self.nombre = nombre
-        self.edad = edad
-        self.rol = rol
+        self.cedula =cedula #*
+        self.nombre = nombre #*
+        self.edad = edad #*
+        self.rol = rol #*
 
+#Estas clases son las que construimos en los metodos para agregarlo a las listas 
 class Administrador(Persona):
     def __init__(self, cedula, nombre, edad, usuario, contrasena):
         super().__init__(cedula, nombre, edad, 'Administrador')
@@ -114,10 +114,10 @@ class Ordenes:
         self.fecha_generacion = fecha_generacion
 
 class Facturas:
-    def __init__(self, id_factura, id_mascota, cedula_dueño, id_orden, producto, valor, cantidad, fecha ):
+    def __init__(self, id_factura, id_mascota, id_dueno, id_orden, producto, valor, cantidad, fecha ):
         self.id_factura = id_factura
         self.id_mascota = id_mascota
-        self.cedula_dueño = cedula_dueño
+        self.id_dueno = id_dueno
         self.id_orden = id_orden
         self.producto = producto
         self.valor = valor
